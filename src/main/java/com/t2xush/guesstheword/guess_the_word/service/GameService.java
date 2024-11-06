@@ -59,6 +59,14 @@ private String randomlyChosenWord= null;
         return isGuessCorrect;
     }
 
+      public boolean isWordGuessed(){
+        for(char c:allCharactersOfTheWord){
+            if(c=='\u0000'){
+                return false;
+            }
+        }
+        return true;
+      }
 
 }
 

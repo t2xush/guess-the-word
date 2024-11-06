@@ -31,6 +31,12 @@ public class GameController {
               if (isGuessCorrect==false){
                   gameUtils.reduceTry();
               }
+          }else{
+              model.addAttribute("error","please enter a character.");
+          }
+
+          if(gameService.isWordGuessed()){
+              model.addAttribute("winMessage","Congratulations! you've guessed the word!");
           }
 
         System.out.println("number of tries remaining: "+gameUtils.getTriesRemaining());

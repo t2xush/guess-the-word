@@ -7,11 +7,20 @@
     <script th:inline="javascript">
       window.onload=  function checkIfGameOver(){
           var numberOfTriesRemaining=[[${triesLeft}]];
+          var winMessage=[[${winMessage!=null}]];
+
+
            if(numberOfTriesRemaining===0){
              alert("Game Over,you lost");
              document.getElementById('guessedChar').disabled=true;
               document.getElementById('try').disabled=true;
              }
+
+             if(winMessage){
+             document.getElementById('guessedChar').disabled=true;
+              document.getElementById('try').disabled=true;
+             }
+
             }
 
         function reloadGame(){
@@ -34,6 +43,8 @@
        <input type="text" name="guessedChar" id="guessedChar" required/>
        <input type="submit" value="try" id="try">
     </form>
+<!--    <div style="color:red;" th:text="${error}"></div>-->
+    <div style="color:green;" th:text="${winMessage}"></div>
 </div>
 </body>
 </html>
