@@ -19,7 +19,14 @@ public class GameController {
 
         System.out.println("guessedchar is "+guessedChar);
         String randomWord = gameService.toString();
+
+
+          if(guessedChar !=null) {
+              gameService.addGuess(guessedChar.charAt(0));
+              randomWord=gameService.toString();
+          }
         model.addAttribute("wordToDisplay",randomWord);
+
         return "game-home-page";
     }
 }

@@ -9,7 +9,7 @@ import java.util.Random;
 @Service
 public class GameService {
 private String randomlyChosenWord= null;
-    private String[] randomWords={"mother","sister","hello","lunch","evening","country","okay"};
+    private String[] randomWords={"mother","sister","hello","evening","country","okay"};
 
    private char[] allCharactersOfTheWord;
     Random random=new Random();
@@ -29,9 +29,21 @@ allCharactersOfTheWord=new char[randomlyChosenWord.length()];
            if(c=='\u0000'){
                ret=ret+"_";
            }
+           else {
+               ret=ret+c;
+           }
            ret=ret+" ";
        }
         return ret;
+    }
+
+    public void addGuess(char guessedChar) {
+
+        for(int i=0;i<randomlyChosenWord.length(); i++) {
+            if (guessedChar == randomlyChosenWord.charAt(i)) {
+                allCharactersOfTheWord[i]=guessedChar;
+            }
+        }
     }
 }
 
