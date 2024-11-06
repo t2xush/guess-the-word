@@ -8,14 +8,30 @@ import java.util.Random;
 
 @Service
 public class GameService {
+private String randomlyChosenWord= null;
+    private String[] randomWords={"mother","sister","hello","lunch","evening","country","okay"};
 
-    private String[] randomWords={"mother","father","sister","string","hello","lunch","evening","country"};
+   private char[] allCharactersOfTheWord;
     Random random=new Random();
 
+    public GameService() {
+randomlyChosenWord=randomWords[random.nextInt(randomWords.length)];
+        System.out.println("randomly chosen word is: "+randomlyChosenWord);
+allCharactersOfTheWord=new char[randomlyChosenWord.length()];
+    }
 
     @Override
     public String toString() {
-        System.out.println(randomWords.length);
-        return randomWords[random.nextInt(randomWords.length)];
+
+        String ret="";
+
+       for (char c:allCharactersOfTheWord){
+           if(c=='\u0000'){
+               ret=ret+"_";
+           }
+           ret=ret+" ";
+       }
+        return ret;
     }
 }
+
