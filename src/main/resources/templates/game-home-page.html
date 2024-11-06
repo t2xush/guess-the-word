@@ -8,11 +8,16 @@
       window.onload=  function checkIfGameOver(){
           var numberOfTriesRemaining=[[${triesLeft}]];
            if(numberOfTriesRemaining===0){
-             alert("Game Over");
+             alert("Game Over,you lost");
              document.getElementById('guessedChar').disabled=true;
               document.getElementById('try').disabled=true;
              }
             }
+
+        function reloadGame(){
+
+        window.location.href="http://localhost:8080/reload";
+        }
 
     </script>
 </head>
@@ -21,6 +26,8 @@
 <h2 style="text-align:center" th:text="${wordToDisplay}">show a random word here</h2>
 <h2 style="text-align:right" th:text="'Tries Left:'+${triesLeft}"></h2>
 <hr/>
+
+<input type="button" value="reload" id="reload" style="float:right;" onclick="reloadGame()">
 <div style="text-align:center">
     <form action="game-home" method="GET">
        <label>Guess a Char:</label>

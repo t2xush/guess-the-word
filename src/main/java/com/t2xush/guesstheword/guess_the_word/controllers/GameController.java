@@ -40,4 +40,12 @@ public class GameController {
 
         return "game-home-page";
     }
+
+    @GetMapping("/reload")
+    public String reloadGame(){
+        gameService=gameUtils.reload();
+        gameUtils.resetTries();
+        return "redirect:/game-home";
+    }
+
 }

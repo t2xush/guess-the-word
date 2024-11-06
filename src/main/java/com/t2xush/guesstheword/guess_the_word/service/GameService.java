@@ -1,5 +1,6 @@
 package com.t2xush.guesstheword.guess_the_word.service;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLOutput;
@@ -7,7 +8,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 @Service
+@Scope("prototype")
 public class GameService {
+
+
+
 private String randomlyChosenWord= null;
     private String[] randomWords={"mother","sister","hello","evening","country","okay"};
 
@@ -53,5 +58,7 @@ private String randomlyChosenWord= null;
         }
         return isGuessCorrect;
     }
+
+
 }
 
