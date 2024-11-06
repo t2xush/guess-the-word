@@ -15,9 +15,11 @@ private String randomlyChosenWord= null;
     Random random=new Random();
 
     public GameService() {
-randomlyChosenWord=randomWords[random.nextInt(randomWords.length)];
+         randomlyChosenWord=randomWords[random.nextInt(randomWords.length)];
         System.out.println("randomly chosen word is: "+randomlyChosenWord);
-allCharactersOfTheWord=new char[randomlyChosenWord.length()];
+
+
+     allCharactersOfTheWord=new char[randomlyChosenWord.length()];
     }
 
     @Override
@@ -37,13 +39,19 @@ allCharactersOfTheWord=new char[randomlyChosenWord.length()];
         return ret;
     }
 
-    public void addGuess(char guessedChar) {
+    public boolean addGuess(char guessedChar) {
+
+
+        boolean isGuessCorrect=false;
 
         for(int i=0;i<randomlyChosenWord.length(); i++) {
             if (guessedChar == randomlyChosenWord.charAt(i)) {
                 allCharactersOfTheWord[i]=guessedChar;
+                isGuessCorrect=true;
             }
+
         }
+        return isGuessCorrect;
     }
 }
 
